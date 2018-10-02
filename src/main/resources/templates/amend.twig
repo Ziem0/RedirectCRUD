@@ -1,0 +1,19 @@
+{% extends "templateAmend.twig" %}
+{% import "macros.twig" as mac %}
+
+{%  block inputs %}
+    <div class="inputs">
+        <form method="post">
+            <label for="name">Name:</label>
+            {{ mac.inputs("name", "text", "name", "type/edit your name..") }}
+            <label for="last">Last name:</label>
+            {{ mac.inputs("last", "text", "last", "type/edit your last name..") }}
+            <label for="age">Age:</label>
+            {{ mac.inputs("age", "number", "age", "type/edit your age..") }}
+            {#<input class="submit" name="submit" value="enter" type="submit">#}
+            {#<button type="submit"><a href="/redirect">SEND</a></button>#}
+            <button>SEND</button>
+        </form>
+        <h4>If you want get back to main page click --> <a href="/students">BANG!</a></h4>
+    </div>
+{% endblock %}

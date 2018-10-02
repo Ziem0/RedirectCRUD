@@ -1,0 +1,26 @@
+{% extends "templateRecords.twig" %}
+
+{% block content %}
+    {{ message }}
+    <div class="content">
+        <a href="/students/add">ADD</a>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>FIRST</th>
+                <th>LAST</th>
+                <th>AGE</th>
+                <th>ACTION</th>
+            </tr>
+            {% for key, values in rows %}
+                <tr>
+                    <td>{{ key }} </td>
+                    {% for value in values %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                    <td><a href="/students/edit/{{ key }}">EDIT</a> <a href="/students/delete/{{ key }}">DELETE</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
