@@ -14,7 +14,6 @@ public class Student {
 	private String lastName;
 	private int age;
 
-
 	public Student(String name, String lastName, int age) {
 		this.id = idParser();
 		this.name = name;

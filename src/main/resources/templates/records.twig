@@ -3,7 +3,8 @@
 {% block content %}
     {{ message }}
     <div class="content">
-        <a href="/students/add">ADD</a>
+        <button><a href="/students/add">ADD</a></button>
+        <br>
         <table>
             <tr>
                 <th>ID</th>
@@ -18,7 +19,7 @@
                     {% for value in values %}
                         <td>{{ value }}</td>
                     {% endfor %}
-                    <td><a href="/students/edit/{{ key }}">EDIT</a> <a href="/students/delete/{{ key }}">DELETE</a></td>
+                    <td><button><a href="/students/edit/{{ key }}">EDIT</a></button> <button><a href="/students/delete/{{ key }}">DELETE</a></button></td>
                 </tr>
             {% endfor %}
         </table>
