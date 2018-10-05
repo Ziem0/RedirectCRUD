@@ -26,11 +26,12 @@ public class StudentController implements HttpHandler {
 
 	@Override
 	public void handle(HttpExchange exchange) throws IOException {
-		method = exchange.getRequestMethod();
+
+		this.method = exchange.getRequestMethod();
 		this.exchange = exchange;
 
 		String data = URIParser.readRoute(exchange).get("data");
-		value = URIParser.readRoute(exchange).get("action");
+		this.value = URIParser.readRoute(exchange).get("action");
 
 		switch (data) {
 			case "index":
@@ -69,7 +70,7 @@ public class StudentController implements HttpHandler {
 	private void add() throws IOException {
 		if (method.equalsIgnoreCase("POST")) {
 			readData();
-			redirect();
+//			redirect();
 			response = display.getRecordsPage("record added!");
 		} else {
 			response = display.getAmendPage();
@@ -93,15 +94,6 @@ public class StudentController implements HttpHandler {
 		handleTypeAction();
 	}
 
-	private void handleTypeAction() {
-		if (value == null) {
-			new Student(name, last, Integer.valueOf(age));
-		} else {
-			List<String> newData = Arrays.asList(name, last, age);
-			Student.edit(value, newData);
-		}
-	}
-
 	private Map<String, String> parseInputs(String inputs) throws UnsupportedEncodingException {
 
 		Map<String, String> parsedInputs = new HashMap<>();
@@ -116,11 +108,20 @@ public class StudentController implements HttpHandler {
 		return parsedInputs;
 	}
 
+	private void handleTypeAction() {
+		if (value == null) {
+			new Student(name, last, Integer.valueOf(age));
+		} else {
+			List<String> newData = Arrays.asList(name, last, age);
+			Student.edit(value, newData);
+		}
+	}
+
 	private void edit() throws IOException {
 		if (method.equalsIgnoreCase("POST")) {
 			readData();
-			redirect();
-			response = display.getRecordsPage("record modify!");
+//			redirect();
+			response = display.getRecordsPage("Record modify!");
 		} else {
 			response = display.getAmendPage();
 		}
@@ -128,7 +129,7 @@ public class StudentController implements HttpHandler {
 
 	private void delete() throws IOException {
 		Student.removeRecordBy(String.valueOf(value));
-		redirect();
+//		redirect();
 		response = display.getRecordsPage("Record has been successfully removed");
 	}
 

@@ -19,14 +19,14 @@ public class Student {
 		this.name = name;
 		this.lastName = lastName;
 		this.age = age;
-		addRecord(name, lastName, age);
+		addRecord();
 	}
 
-	private void addRecord(String name, String lastName, int age) {
+	private void addRecord() {
 		List<String> values = new LinkedList<>();
-		values.add(name);
-		values.add(lastName);
-		values.add(String.valueOf(age));
+		values.add(this.name);
+		values.add(this.lastName);
+		values.add(String.valueOf(this.age));
 		rows.put(String.valueOf(id), values);
 	}
 
